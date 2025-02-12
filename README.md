@@ -34,3 +34,23 @@ The `requirements.txt` file includes several essential Python libraries, such as
 - `black` (code formatting)  
 
 Users can freely add more packages and specify versions as needed to customize the environment.
+
+## Documentation Generation
+
+1. Use sphinx-apidoc to generate the .rst files needed to document them:
+    ```bash
+    # From your project's root (where docs folder is present):
+    sphinx-apidoc -o docs/source/ .
+    ```
+
+2. Inside the `docs/` directory, run:
+    ```bash
+    make clean
+    make html
+    ```
+
+3. Auto-reloading as you edit docs, run
+    ```
+    sphinx-autobuild source build/html
+    ```
+    inside the docs directory. Then open http://127.0.0.1:8000 in your browser. Each time you change a file in `source/`, it rebuilds automatically.
