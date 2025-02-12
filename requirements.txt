@@ -5,3 +5,7 @@ matplotlib
 jupyter
 ipykernel
 black
+sphinx
+sphinx-rtd-theme
+myst-parser
+sphinx-autobuild

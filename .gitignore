@@ -135,3 +135,6 @@ cython_debug/
 
 # Devcontainer settings
 !.devcontainer/
+
+# Built documentation
+docs/_build/
