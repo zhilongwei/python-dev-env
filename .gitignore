@@ -137,4 +137,5 @@ cython_debug/
 !.devcontainer/
 
 # Built documentation
-docs/_build/
+docs/build/
+docs/source/*.rst
