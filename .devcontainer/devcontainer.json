@@ -7,13 +7,14 @@
         "vscode": {
             "extensions": [
                 "ms-python.python",
+                "ms-python.debug",
                 "ms-python.vscode-pylance",
                 "ms-toolsai.jupyter",
                 "ms-python.black-formatter",
                 "github.vscode-pull-request-github",
                 "eamodio.gitlens"
-        ],
-        "settings": {
+            ],
+            "settings": {
                 "python.defaultInterpreterPath": "/workspace/.venv/bin/python",
                 "python.venvPath": "/workspace/.venv",
                 "jupyter.jupyterServerType": "local",
