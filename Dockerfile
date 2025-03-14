@@ -8,15 +8,35 @@ ENV PYTHONUNBUFFERED=1 \
 
 # Install system dependencies including Git
 RUN apt-get update && apt-get install -y \
-build-essential \
-python3-dev \
-libatlas-base-dev \
-libopenblas-dev \
-liblapack-dev \
-gfortran \
-git \
-curl \
-&& rm -rf /var/lib/apt/lists/*
+    build-essential \
+    python3-dev \
+    libatlas-base-dev \
+    libopenblas-dev \
+    liblapack-dev \
+    gfortran \
+    git \
+    curl \
+    latexmk \
+    texlive-latex-base \
+    texlive-latex-extra \
+    texlive-fonts-recommended \
+    texlive-science \
+    dvipng \
+    ghostscript \
+    cm-super \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set global Matplotlib settings in matplotlibrc
+RUN mkdir -p /etc/matplotlib && echo "\
+text.usetex: True\n\
+font.family: serif\n\
+font.size: 10\n\
+text.latex.preamble: \\usepackage{amsmath,amssymb,bm,siunitx}\n\
+" > /etc/matplotlib/matplotlibrc
+
+# Ensure Matplotlib uses this configuration
+ENV MATPLOTLIBRC="/etc/matplotlib"
 
 # Create a working directory
 WORKDIR /workspace
