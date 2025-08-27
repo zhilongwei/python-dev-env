@@ -41,11 +41,11 @@ ENV MATPLOTLIBRC="/etc/matplotlib"
 # Create a working directory
 WORKDIR /workspace
 
-# Create a virtual environment under /workspace/.venv
-RUN python -m venv /workspace/.venv
+# Create a virtual environment under /opt/venv
+RUN python -m venv /opt/venv
 
 # Make the venv active for subsequent steps
-ENV VIRTUAL_ENV=/workspace/.venv
+ENV VIRTUAL_ENV=/opt/venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Copy requirements
@@ -53,7 +53,12 @@ COPY requirements.txt .
 
 # Install dependencies (with an option to silence the root warning)
 RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
+    pip install -r requirements.txt \
+    && pip install ipykernel \
+    && python -m ipykernel install \
+         --prefix=$VIRTUAL_ENV \
+         --name python-dev \
+         --display-name "Python (devcontainer)"
 
 # Default command
 CMD ["bash"]

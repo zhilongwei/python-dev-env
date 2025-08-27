@@ -3,6 +3,7 @@
     "image": "python-dev:3.11",
     "workspaceFolder": "/workspace",
     "remoteUser": "root",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -15,17 +16,13 @@
                 "eamodio.gitlens"
             ],
             "settings": {
-                "python.defaultInterpreterPath": "/workspace/.venv/bin/python",
-                "python.venvPath": "/workspace/.venv",
+                "python.defaultInterpreterPath": "/opt/venv/bin/python",
+                "python.venvPath": "/opt/venv",
                 "jupyter.jupyterServerType": "local",
                 "editor.formatOnSave": true,
                 "python.formatting.provider": "black",
                 "git.autofetch": true
             }
         }
-    },
-    "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt",
-    "mounts": [
-        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
-    ]
+    }
 }
